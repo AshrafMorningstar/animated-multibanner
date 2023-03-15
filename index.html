@@ -19,6 +19,46 @@
     .btn{display:inline-block;padding:6px 10px;margin:4px;background:rgba(255,255,255,0.04);color:#fff;border-radius:8px;cursor:pointer;text-decoration:none}
     .right{position:absolute;right:16px;top:16px;text-align:right;color:#ccc}
   </style>
+<style>
+:root {
+    --primary: #00f2fe;
+    --secondary: #4facfe;
+    --bg-dark: rgba(10, 10, 20, 0.85);
+    --glass: rgba(255, 255, 255, 0.1);
+    --neon-border: rgba(0, 242, 254, 0.5);
+}
+
+body {
+    background: radial-gradient(circle at center, #1a1a2e 0%, #0f0f1b 100%) !important;
+    color: #e0e0e0 !important;
+    font-family: 'Inter', 'Segoe UI', sans-serif !important;
+    backdrop-filter: blur(10px);
+}
+
+.neo-glass, button, input, .card, div[class*="container"] {
+    background: var(--glass) !important;
+    backdrop-filter: blur(15px) !important;
+    border: 1px solid var(--neon-border) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37) !important;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+button:hover, .btn:hover {
+    transform: scale(1.1) !important;
+    background: var(--primary) !important;
+    color: #000 !important;
+    box-shadow: 0 0 20px var(--primary) !important;
+}
+
+button:active {
+    transform: scale(0.95) !important;
+}
+
+* {
+    transition: transform 0.3s ease, background 0.3s ease !important;
+}
+</style>
 </head>
 <body>
   <canvas id="canvas"></canvas>
