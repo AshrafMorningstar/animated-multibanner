@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Ashraf Morningstar — Multi 3D Demos</title>
+  <style>
+    html,body{height:100%;margin:0;background:#05030a;color:#fff;font-family:Inter,system-ui;}
+    #canvas{width:100vw;height:100vh;display:block}
+    .ui{position:absolute;left:16px;top:16px;z-index:20;background:rgba(0,0,0,0.28);padding:10px;border-radius:10px}
+    .btn{display:inline-block;padding:6px 10px;margin:4px;background:rgba(255,255,255,0.04);color:#fff;border-radius:8px;cursor:pointer;text-decoration:none}
+    .right{position:absolute;right:16px;top:16px;text-align:right;color:#ccc}
+  </style>
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+  <div class="ui">
+    <strong>Ashraf Morningstar — 3D Demos</strong><br/>
+    <div style="margin-top:8px">
+      <button class="btn" data-scene="fox">Cyber Fox</button>
+      <button class="btn" data-scene="dragon">Cyber Dragon</button>
+      <button class="btn" data-scene="phoenix">Neon Phoenix</button>
+      <button class="btn" data-scene="wolf">Neon Wolf</button>
+      <button class="btn" data-scene="pbr">PBR Demo</button>
+      <a class="btn" href="README_PROFILE.md" download>Profile README</a>
+    </div>
+  </div>
+  <div class="right">Click a button to load a scene • Works on GH Pages</div>
+
+  <script type="module">
+    const canvas = document.getElementById('canvas');
+    let current = null;
+    async function loadScene(name){
+      if(current && current.dispose) { try { current.dispose(); } catch(e){} }
+      const mod = await import('./scenes/scene_' + name + '.js');
+      current = mod.default(canvas);
+      window._SCENE = current;
+    }
+    document.querySelectorAll('.btn[data-scene]').forEach(b=>{
+      b.addEventListener('click', ()=> loadScene(b.dataset.scene));
+    });
+    // load default
+    loadScene('fox');
+  </script>
+</body>
+</html>
