@@ -1,3 +1,11 @@
+/*
+ Copyright (c) 2026 Ashraf Morningstar
+ These are personal recreations of existing projects, developed by Ashraf Morningstar
+ for learning and skill development.
+ Original project concepts remain the intellectual property of their respective creators.
+ Repository: https://github.com/AshrafMorningstar
+*/
+
 import * as THREE from 'https://unpkg.com/three@0.158.0/build/three.module.js';
 export default function initScene(canvas){
   const renderer = new THREE.WebGLRenderer({canvas,antialias:true});
